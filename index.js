@@ -29,7 +29,7 @@ require("./src/router/contact-router.js")(app);
 const mongodb=process.env.MONGODBURL
 app.listen(8000, () => {
   mongoose
-    .connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(mongodb)
     .then(() => {
       console.log("Connected to MongoDB");
     })

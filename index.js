@@ -5,8 +5,14 @@ const cors = require("cors");
 const bodyparser = require("body-parser");
 
 app.use(bodyparser.json());
+
+const corsOptions = {
+  origin: 'https://portfoliowebsite-alpha-sooty.vercel.app/', // Replace with your actual frontend domain
+  methods: ['GET', 'POST'], // Allow the methods your frontend uses
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+}
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {

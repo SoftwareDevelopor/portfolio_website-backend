@@ -6,11 +6,17 @@ const bodyparser = require("body-parser");
 
 app.use(bodyparser.json());
 
+// Configure CORS to allow your Vercel frontend domain
 const corsOptions = {
-  origin: 'https://portfoliowebsite-alpha-sooty.vercel.app/', // Replace with your actual frontend domain
-  methods: ['GET', 'POST'], // Allow the methods your frontend uses
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
-}
+  origin: [
+    'https://portfoliowebsite-alpha-sooty.vercel.app',    // without trailing slash
+    'https://portfoliowebsite-alpha-sooty.vercel.app:443', // with explicit port
+    'http://localhost:3000',     // local development
+  ],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,             // Allow credentials
+};
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

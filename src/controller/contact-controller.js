@@ -4,28 +4,30 @@ require("dotenv").config();
 
 exports.createcontact = async (request, response) => {
   try {
-    let contactData = request.body;
-
+    const contactData = request.body;
     const newContact = new ContactModal(contactData);
-    await newContact
-      .save()
-      .then((result) => {
-        const obj = {
-          _status: "success",
-          message: "Contact created successfully & Email has started sending..!",
-          data: result,
-        };
-        response.send(obj);
-      })
-      .catch((error) => {
-        console.log(error);
+    
+    try {
+      const result = await newContact.save();
+      response.status(200).send({
+        _status: "success",
+        message: "Contact created successfully!",
+        data: result,
       });
+    } catch (saveError) {
+      console.error('Failed to save contact:', saveError);
+      response.status(500).send({
+        _status: "failed",
+        message: "Failed to save your message",
+        error: saveError.message
+      });
+    }
   } catch (error) {
-    const obj = {
+    console.error('Contact creation error:', error);
+    response.status(500).send({
       _status: "failed",
       message: "Contact creation failed!",
-      error: error,
-    };
-    response.send(obj);
+      error: error.message,
+    });
   }
 };

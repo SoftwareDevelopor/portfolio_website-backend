@@ -10,7 +10,7 @@ app.use(bodyparser.json());
 const corsOptions = {
   origin: [
     'https://portfolio-website-backend-oqfc.onrender.com',    // without trailing slash
-    'https://portfolio-website-backend-oqfc.onrender.com:443', // with explicit port,
+    'https://portfolio-website-backend-oqfc.onrender.com/',
      ],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],

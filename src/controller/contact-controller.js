@@ -1,4 +1,4 @@
-const emailjs = require("@emailjs/browser");
+
 const ContactModal = require("../Modal/ContactModal");
 require("dotenv").config();
 

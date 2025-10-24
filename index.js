@@ -15,11 +15,10 @@ app.get("/", (req, res) => {
 
 require("./src/router/contact-router.js")(app);
 
+const mongodb=process.env.MONGODBURL
 app.listen(8000, () => {
   mongoose
-    .connect(
-      "mongodb+srv://saurabhkumar13618:admin@cluster0.0xxe08l.mongodb.net/test"
-    )
+    .connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
       console.log("Connected to MongoDB");
     })

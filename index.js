@@ -9,9 +9,9 @@ app.use(bodyparser.json());
 // Configure CORS to allow your Vercel frontend domain
 const corsOptions = {
   origin: [
-    'https://portfolio-website-backend-oqfc.onrender.com',    // without trailing slash
-    'https://portfolio-website-backend-oqfc.onrender.com/',
-     ],
+    "https://portfoliowebsite-alpha-sooty.vercel.app", // without trailing slash
+    "https://portfoliowebsite-alpha-sooty.vercel.app/", // with explicit port,
+  ],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,             // Allow credentials
